@@ -134,12 +134,12 @@ export default function ProductDetailPage() {
                   </div>
                   <div className="text-left">
                     <div className="font-semibold text-gray-900">Call Now</div>
-                    <div className="text-sm text-gray-600">+91 98765 43210</div>
+                    <div className="text-sm text-gray-600">+91 93409 98315</div>
                   </div>
                 </a>
 
                 <a 
-                  href="mailto:contact@shop.com?subject=Product%20Inquiry%20-%20{product.name}" 
+                  href="mailto:Patelganesh8959@gmail.com?subject=Product%20Inquiry%20-%20{product.name}" 
                   className="flex items-center justify-center space-x-3 bg-white hover:bg-gray-50 border border-gray-200 rounded-xl p-4 transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 group"
                 >
                   <div className="p-3 bg-blue-100 rounded-full group-hover:bg-blue-200 transition-colors">
@@ -147,7 +147,7 @@ export default function ProductDetailPage() {
                   </div>
                   <div className="text-left">
                     <div className="font-semibold text-gray-900">Email Us</div>
-                    <div className="text-sm text-gray-600">contact@shop.com</div>
+                    <div className="text-sm text-gray-600">Patelganesh8959@gmail.com</div>
                   </div>
                 </a>
               </div>
@@ -155,7 +155,7 @@ export default function ProductDetailPage() {
               <div className="flex items-center justify-center space-x-4 pt-4 border-t border-blue-200">
                 <button className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors">
                   <MessageCircle className="h-4 w-4" />
-                  <span className="text-sm font-medium">WhatsApp: +91 98765 43210</span>
+                  <span className="text-sm font-medium">WhatsApp: +91 93409 98315</span>
                 </button>
                 <div className="w-px h-4 bg-gray-300"></div>
                 <button className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors">

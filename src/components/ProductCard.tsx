@@ -83,12 +83,11 @@ export default function ProductCard({ product }: ProductCardProps) {
                 </p>
               )}
             </div>
-
             {/* Contact Section - Compact & Beautiful */}
             <div className="bg-gradient-to-r from-slate-50 to-blue-50 rounded-lg p-3 border border-gray-100">
               <div className="flex items-center justify-between">
                 <a 
-                  href="tel:+919876543210" 
+                  href="tel:+919340998315" 
                   className="flex items-center space-x-1.5 text-gray-700 hover:text-blue-600 transition-colors group/phone"
                   onClick={(e) => e.stopPropagation()}
                 >
@@ -97,14 +96,14 @@ export default function ProductCard({ product }: ProductCardProps) {
                   </div>
                   <div>
                     <span className="text-xs font-medium block">Call</span>
-                    <span className="text-xs text-gray-500">98765 43210</span>
+                    <span className="text-xs text-gray-500">93409 98315</span>
                   </div>
                 </a>
                 
                 <div className="w-px h-8 bg-gray-200"></div>
                 
                 <a 
-                  href="mailto:contact@shop.com" 
+                  href="mailto:Patelganesh8959@gmail.com" 
                   className="flex items-center space-x-1.5 text-gray-700 hover:text-blue-600 transition-colors group/email"
                   onClick={(e) => e.stopPropagation()}
                 >
@@ -113,7 +112,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                   </div>
                   <div>
                     <span className="text-xs font-medium block">Email</span>
-                    <span className="text-xs text-gray-500">contact@shop.com</span>
+                    <span className="text-xs text-gray-500">Patelganesh8959@gmail.com</span>
                   </div>
                 </a>
               </div>

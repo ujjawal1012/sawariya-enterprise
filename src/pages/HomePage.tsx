@@ -189,8 +189,8 @@ export default function HomePage() {
         </div>
         <div>
           <h4 className="font-semibold mb-3">Contact Us</h4>
-          <p className="text-gray-400">Email: support@sawariya.com</p>
-          <p className="text-gray-400">Phone: +91 12345 67890</p>
+          <p className="text-gray-400">Email: Patelganesh8959@gmail.com</p>
+          <p className="text-gray-400">Phone: +91 9340998315</p>
           <p className="text-gray-400 mt-2">Mon - Sat: 10am - 7pm</p>
         </div>
           </div>
