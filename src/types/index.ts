@@ -11,6 +11,7 @@ export interface Product {
   rating: number;
   reviews: number;
   brand: string;
+  additionalImages?: string[];
 }
 
 export interface CartItem {

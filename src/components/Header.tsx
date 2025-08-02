@@ -55,7 +55,7 @@ export default function Header() {
     { name: 'Memory', path: '/products?category=Memory' },
     { name: 'Storage', path: '/products?category=Storage' },
     { name: 'Motherboards', path: '/products?category=Motherboards' },
-    { name: 'Power Supplies', path: '/products?category=Power Supplies' }
+    { name: 'Refurbished Laptop', path: '/products?category=Refurbished Laptop' }
   ];
 
   const handleCategoryClick = () => {

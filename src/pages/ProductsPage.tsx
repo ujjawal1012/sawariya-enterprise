@@ -44,7 +44,7 @@ export default function ProductsPage() {
     if (activeCategory && activeCategory.toLowerCase() !== "all") {
       
       filtered = filtered.filter(
-        (product) => product.category === activeCategory
+        (product) => product.category.toLowerCase() === activeCategory
       );
     }
     // Sort

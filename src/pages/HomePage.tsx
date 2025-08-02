@@ -120,7 +120,7 @@ export default function HomePage() {
               { name: 'Memory', image: 'https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=300' },
               { name: 'Storage', image: 'https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=300' },
               { name: 'Motherboards', image: 'https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=300' },
-              { name: 'Power Supplies', image: 'https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=300' }
+              { name: 'Refurbished Laptop', image: 'https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=300' }
             ].map((category) => (
               <Link
                 key={category.name}

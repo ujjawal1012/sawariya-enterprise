@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://sawariya-enterprise.onrender.com/api';
+const API_BASE_URL = 'http://10.206.76.162:3001/api';
 
 let token: string | null = null;
 
