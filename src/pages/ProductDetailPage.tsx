@@ -57,7 +57,7 @@ export default function ProductDetailPage() {
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-full h-96 object-cover rounded-xl shadow-lg"
+                className="w-full h-96 object-contain rounded-xl shadow-lg"
               />
               {discountPercentage > 0 && (
                 <div className="absolute top-4 left-4 bg-gradient-to-r from-red-500 to-pink-500 text-white px-4 py-2 rounded-lg text-sm font-bold shadow-lg">

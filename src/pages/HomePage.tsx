@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight, Truck, Shield, Headphones, Star } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import ProductCard from '../components/ProductCard';
@@ -7,6 +7,7 @@ import ProductCard from '../components/ProductCard';
 export default function HomePage() {
   const { state, loadProducts } = useApp();
   const featuredProducts = state.products.slice(0, 4);
+  const navigate = useNavigate();
 
   useEffect(() => {
     loadProducts();
@@ -144,7 +145,12 @@ export default function HomePage() {
 
       {/* Testimonials */}
       {/* Footer */}
-      <footer className="bg-gray-900 text-gray-200 py-12 mt-12">
+      <footer className="bg-gray-900 text-gray-200 py-12 mt-12 relative">
+        <div
+        onClick={()=>navigate('/admin')}
+         className='w-10 h-10 rounded-full bg-gray-800 text-white flex items-center justify-center mx-auto  absolute right-4 bottom-3'>
+          
+        </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         <div>

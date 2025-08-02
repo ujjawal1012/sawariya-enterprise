@@ -179,33 +179,6 @@ export default function AdminPage() {
               </div>
             </div>
 
-            {/* Recent Activity */}
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <h2 className="text-lg font-semibold mb-4">Recent Activity</h2>
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-sm text-gray-600">
-                    New order received - ₹45,999
-                  </span>
-                  <span className="text-xs text-gray-400">2 minutes ago</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                  <span className="text-sm text-gray-600">
-                    Product "Intel Core i9" updated
-                  </span>
-                  <span className="text-xs text-gray-400">1 hour ago</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                  <span className="text-sm text-gray-600">
-                    New customer registration
-                  </span>
-                  <span className="text-xs text-gray-400">3 hours ago</span>
-                </div>
-              </div>
-            </div>
           </div>
         )}
 
