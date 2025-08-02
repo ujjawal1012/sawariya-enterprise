@@ -11,7 +11,7 @@ export interface Product {
   rating: number;
   reviews: number;
   brand: string;
-  additionalImages?: string[];
+  additionalImages?: any ; // Allow both string URLs and File objects for additional images
 }
 
 export interface CartItem {

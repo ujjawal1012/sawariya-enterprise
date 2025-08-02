@@ -22,7 +22,7 @@ export default function ProductForm({ product, onClose }: ProductFormProps) {
     specifications: {} as Record<string, string>,
   });
   const [additionalImages, setAdditionalImages] = useState<File[]>([]);
-  console.log("🚀 ~ ProductForm ~ additionalImages:", additionalImages)
+  console.log("🚀 ~ ProductForm ~ additionalImages:", additionalImages);
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -43,62 +43,64 @@ export default function ProductForm({ product, onClose }: ProductFormProps) {
         inStock: true,
         specifications: product.specifications,
       });
+      setAdditionalImages(product?.additionalImages); // Reset to empty, since product.additionalImages is string[] not File[]
     }
   }, [product]);
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  setLoading(true);
-  setError(null);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
 
-  try {
-    const formDataToSend = new FormData();
-    formDataToSend.append("name", formData.name);
-    formDataToSend.append("category", formData.category);
-    formDataToSend.append("price", formData.price);
-    if (formData.originalPrice) {
-      formDataToSend.append("originalPrice", formData.originalPrice);
-    }
-    formDataToSend.append("description", formData.description);
-    formDataToSend.append("brand", formData.brand);
-    formDataToSend.append("inStock", formData.inStock.toString());
+    try {
+      const formDataToSend = new FormData();
+      formDataToSend.append("name", formData.name);
+      formDataToSend.append("category", formData.category);
+      formDataToSend.append("price", formData.price);
+      if (formData.originalPrice) {
+        formDataToSend.append("originalPrice", formData.originalPrice);
+      }
+      formDataToSend.append("description", formData.description);
+      formDataToSend.append("brand", formData.brand);
+      formDataToSend.append("inStock", formData.inStock.toString());
 
-    // ✅ Only add specifications if not empty
-    const hasSpecifications = formData.specifications ? Object.keys(formData.specifications).length > 0 : false;
-    if (hasSpecifications) {
-      formDataToSend.append(
-        "specifications",
-        JSON.stringify(formData.specifications)
+      // ✅ Only add specifications if not empty
+      const hasSpecifications = formData.specifications
+        ? Object.keys(formData.specifications).length > 0
+        : false;
+      if (hasSpecifications) {
+        formDataToSend.append(
+          "specifications",
+          JSON.stringify(formData.specifications)
+        );
+      } else {
+        formDataToSend.append("specifications", JSON.stringify({}));
+      }
+
+      if (imageFile) {
+        formDataToSend.append("image", imageFile);
+      }
+
+      // ✅ Append additional images
+      additionalImages.forEach((file, index) => {
+        formDataToSend.append("additionalImages", file); // use same name to create an array at backend
+      });
+
+      if (product) {
+        await apiService.updateProduct(product._id, formDataToSend);
+      } else {
+        await apiService.createProduct(formDataToSend);
+      }
+
+      onClose();
+    } catch (error) {
+      setError(
+        error instanceof Error ? error.message : "Failed to save product"
       );
-    }else {
-      formDataToSend.append("specifications", JSON.stringify({}));
+    } finally {
+      setLoading(false);
     }
-
-    if (imageFile) {
-      formDataToSend.append("image", imageFile);
-    }
-
-    // ✅ Append additional images
-    additionalImages.forEach((file, index) => {
-      formDataToSend.append("additionalImages", file); // use same name to create an array at backend
-    });
-
-    if (product) {
-      await apiService.updateProduct(product._id, formDataToSend);
-    } else {
-      await apiService.createProduct(formDataToSend);
-    }
-
-    onClose();
-  } catch (error) {
-    setError(
-      error instanceof Error ? error.message : "Failed to save product"
-    );
-  } finally {
-    setLoading(false);
-  }
-};
-
+  };
 
   const addSpecification = () => {
     if (specKey && specValue) {
@@ -265,40 +267,40 @@ const handleSubmit = async (e: React.FormEvent) => {
                 </div>
               )}
             </div>
-            
           </div>
           <div>
-  <label className="block text-sm font-medium text-gray-700 mb-2">
-    Additional Images
-  </label>
-  <input
-    type="file"
-    accept="image/*"
-    max={5}
-    multiple
-    onChange={(e) => {
-      if (e.target.files) {
-        setAdditionalImages(Array.from(e.target.files));
-      }
-    }}
-    className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-  />
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Additional Images
+            </label>
+            <input
+              type="file"
+              accept="image/*"
+              max={5}
+              multiple
+              onChange={(e) => {
+                if (e.target.files) {
+                  setAdditionalImages(Array.from(e.target.files));
+                }
+              }}
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
 
-  {additionalImages.length > 0 && (
-    <div className="mt-2 flex flex-wrap gap-2">
-      {additionalImages.map((file, index) => (
-        <div key={index} className="w-20 h-20 relative">
-          <img
-            src={URL.createObjectURL(file)}
-            alt={`Preview ${index}`}
-            className="object-cover rounded w-full h-full"
-          />
-        </div>
-      ))}
-    </div>
-  )}
-</div>
-
+            {additionalImages.length > 0 && (
+              <div className="mt-2 flex flex-wrap gap-2">
+                {additionalImages.map((file, index) => (
+                  <div key={index} className="w-20 h-20 relative">
+                    <img
+                      src={
+                        file instanceof File ? URL.createObjectURL(file) : file
+                      }
+                      alt={`Preview ${index}`}
+                      className="object-cover rounded w-full h-full"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -324,24 +326,26 @@ const handleSubmit = async (e: React.FormEvent) => {
               Specifications
             </label>
 
-            {formData.specifications && <div className="space-y-2 mb-4">
-              {Object.entries(formData.specifications).map(([key, value]) => (
-                <div
-                  key={key}
-                  className="flex items-center space-x-2 bg-gray-50 p-2 rounded"
-                >
-                  <span className="font-medium">{key}:</span>
-                  <span>{value}</span>
-                  <button
-                    type="button"
-                    onClick={() => removeSpecification(key)}
-                    className="text-red-600 hover:text-red-800"
+            {formData.specifications && (
+              <div className="space-y-2 mb-4">
+                {Object.entries(formData.specifications).map(([key, value]) => (
+                  <div
+                    key={key}
+                    className="flex items-center space-x-2 bg-gray-50 p-2 rounded"
                   >
-                    <X className="h-4 w-4" />
-                  </button>
-                </div>
-              ))}
-            </div>}
+                    <span className="font-medium">{key}:</span>
+                    <span>{value}</span>
+                    <button
+                      type="button"
+                      onClick={() => removeSpecification(key)}
+                      className="text-red-600 hover:text-red-800"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
 
             <div className="flex gap-4 flex-wrap">
               <input

@@ -79,11 +79,11 @@ export default function Header() {
           <Link to="/" className="flex items-center space-x-2">
             <Monitor className="h-6 w-6 sm:h-8 sm:w-8 text-blue-600" />
             <div className="hidden sm:block">
-              <span className="text-lg sm:text-xl font-bold text-gray-900">Sawariya</span>
+              <span className="text-lg sm:text-xl font-bold text-gray-900">Sawariya Seth</span>
               <span className="text-xs sm:text-sm text-gray-600 block -mt-1">Enterprises</span>
             </div>
             <div className="sm:hidden">
-              <span className="text-lg font-bold text-gray-900">Sawariya</span>
+              <span className="text-lg font-bold text-gray-900">Sawariya Seth</span>
             </div>
           </Link>
 
